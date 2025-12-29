@@ -131,6 +131,110 @@
       position: relative;
       isolation: isolate;
     }
+
+
+
+    /* Modal background */
+    .fleet-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+    }
+
+    /* Modal box */
+    .fleet-modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    /* Image */
+    .fleet-modal-image {
+      max-width: 100%;
+      max-height: 70vh;
+      display: none;
+    }
+
+    /* Video */
+    .fleet-modal-video {
+      max-width: 100%;
+      max-height: 70vh;
+      display: none;
+    }
+
+    /* Close */
+    .fleet-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      font-size: 36px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    .fleet-controls {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .fleet-controls button {
+      padding: 10px 18px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+
+
+
+
+    /* === FLEET CAROUSEL SIZE CONTROL === */
+
+    #fleetCarousel {
+      max-width: 100%;
+    }
+
+    /* Fixed height container */
+    #fleetCarousel .carousel-inner {
+      height: 420px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* Images & videos fit INSIDE */
+    #fleetCarousel img,
+    #fleetCarousel video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      /* 👈 THIS IS THE KEY */
+      display: block;
+    }
+
+    /* Ensure slide takes full height */
+    #fleetCarousel .carousel-item {
+      height: 100%;
+    }
+
+    /* Tablet */
+    @media (max-width: 992px) {
+      #fleetCarousel .carousel-inner {
+        height: 340px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 576px) {
+      #fleetCarousel .carousel-inner {
+        height: 240px;
+      }
+    }
   </style>
 
   <html>
@@ -140,6 +244,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A1 Logistics - Corporate Employee Cab Services</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-icons/font/lucide.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     <style>
       :root {
@@ -1644,15 +1753,9 @@
         }
       }
 
-
-      /* ===============================
-   FIX MOBILE HAMBURGER MENU
-   =============================== */
-
       @media (max-width: 768px) {
         .nav-links {
           display: flex !important;
-          /* override display:none */
           position: fixed;
           inset: 0;
           background: rgba(0, 0, 0, 0.96);
@@ -1808,6 +1911,57 @@
           font-weight: 500;
           color: #000;
         }
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      .fleet-modal-image,
+      .fleet-modal-video {
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0
+        }
+
+        to {
+          opacity: 1
+        }
+      }
+
+
+      #fleet .section-title p {
+        max-width: 720px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 56px;
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        padding: 12px;
       }
     </style>
   </head>
@@ -2376,7 +2530,8 @@
 
       // Pause auto-rotation when user scrolls away from services section
       let servicesSection = null;
-      const observer = new IntersectionObserver((entries) => {
+
+      const fleetObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             if (!isUserInteracting) {
@@ -2400,115 +2555,91 @@
 
 
 
-
-
-
-
-    <!-- Fleet Section (Revised to 4-Quadrant Grid) -->
     <section id="fleet">
       <div class="container">
         <div class="section-title text-center">
-          <h2>Choose Your Ride</h2>
-          <p>
-            Select a vehicle category to view details. A diverse fleet for
-            every requirement.
+          <h2>Find the Right Ride for Your Journey</h2>
+
+          <p class="text-md-center text-start">
+            From comfortable cars to spacious buses, choose the vehicle that fits your travel needs perfectly.
           </p>
+
         </div>
 
-        <div class="fleet-grid-wrapper">
-          <div class="fleet-grid">
-            <!-- Item 1: Sedan -->
-            <div class="fleet-card" data-media-type="banani-button">
-              <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&amp;w=2070"
-                class="fleet-card-bg" alt="Luxury Sedan" />
-              <div class="fleet-card-content">
-                <h3>Executive Sedan</h3>
-                <p>
-                  Premium comfort for 4 passengers, ideal for client meetings
-                  and executive travel.
-                </p>
-                <div class="fleet-details-row">
-                  <div class="fleet-mini-icon">
-                    <iconify-icon icon="lucide:user" style="font-size: 14px"></iconify-icon>
-                    4 Seats
-                  </div>
-                  <div class="fleet-mini-icon">
-                    <iconify-icon icon="lucide:briefcase" style="font-size: 14px"></iconify-icon>
-                    2 Bags
-                  </div>
-                </div>
-              </div>
-            </div>
+        <!-- BOOTSTRAP CAROUSEL -->
 
-            <!-- Item 2: SUV -->
-            <div class="fleet-card" data-media-type="banani-button">
-              <img src="https://images.unsplash.com/photo-1533473359331-0135ef1bcfb0?q=80&amp;w=2070"
-                class="fleet-card-bg" alt="SUV" />
-              <div class="fleet-card-content">
-                <h3>SUV / MUV</h3>
-                <p>
-                  Reliable 6-7 seater vehicles with extra luggage space and
-                  high safety ratings.
-                </p>
-                <div class="fleet-details-row">
-                  <div class="fleet-mini-icon">
-                    <iconify-icon icon="lucide:user" style="font-size: 14px"></iconify-icon>
-                    6 Seats
-                  </div>
-                  <div class="fleet-mini-icon">
-                    <iconify-icon icon="lucide:shield-check" style="font-size: 14px"></iconify-icon>
-                    Rated 5/5
-                  </div>
-                </div>
-              </div>
-            </div>
+        <!-- <div id="fleetCarousel" class="carousel slide" data-bs-ride="false"> -->
+        <div id="fleetCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500"
+          data-bs-pause="hover">
 
-            <!-- Item 3: Tempo -->
-            <div class="fleet-card" data-media-type="banani-button">
-              <img data-query="white mercedes sprinter van passenger" class="fleet-card-bg" alt="Tempo Traveller"
-                src="https://images.unsplash.com/photo-1687485654993-e3a81a21fd6f?crop=entropy&amp;cs=tinysrgb&amp;fit=max&amp;fm=jpg&amp;ixid=M3w2MjYyMDB8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMG1lcmNlZGVzJTIwc3ByaW50ZXIlMjB2YW4lMjBwYXNzZW5nZXJ8ZW58MHx8fHwxNzY1NDU3MTgwfDA&amp;ixlib=rb-4.1.0&amp;q=80&amp;w=1080" />
-              <div class="fleet-card-content">
-                <h3>Tempo Traveller</h3>
-                <p>
-                  Spacious 12-26 seater with push-back seats, perfect for team
-                  outings.
-                </p>
-                <div class="fleet-details-row">
-                  <div class="fleet-mini-icon">
-                    <iconify-icon icon="lucide:users" style="font-size: 14px"></iconify-icon>
-                    12-26 Seats
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <!-- Item 4: Bus -->
-            <div class="fleet-card" data-media-type="banani-button">
-              <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&amp;w=2069" class="fleet-card-bg"
-                alt="Shuttle Bus" />
-              <div class="fleet-card-content">
-                <h3>Shuttle Bus</h3>
-                <p>
-                  Cost-effective 40-50 seater coaches with air suspension for
-                  daily transit.
-                </p>
-                <div class="fleet-details-row">
-                  <div class="fleet-mini-icon">
-                    <iconify-icon icon="lucide:users" style="font-size: 14px"></iconify-icon>
-                    50 Seats
-                  </div>
-                </div>
-              </div>
-            </div>
+          <!-- Indicators -->
+          <div class="carousel-indicators">
+            <button data-bs-target="#fleetCarousel" data-bs-slide-to="0" class="active"></button>
+            <button data-bs-target="#fleetCarousel" data-bs-slide-to="1"></button>
+            <button data-bs-target="#fleetCarousel" data-bs-slide-to="2"></button>
+            <button data-bs-target="#fleetCarousel" data-bs-slide-to="3"></button>
+            <button data-bs-target="#fleetCarousel" data-bs-slide-to="4"></button>
+
           </div>
 
-          <!-- Center Circle -->
-          <div class="fleet-center-circle">
-            <h3>A1 Logistics<br />Fleet</h3>
+          <!-- Slides -->
+          <div class="carousel-inner rounded-4 overflow-hidden">
+
+            <!-- IMAGE 1 -->
+            <div class="carousel-item active" data-type="image">
+              <img src="./images/dzire1.jpeg" class="d-block w-100" alt="Sedan" />
+            </div>
+
+            <!-- IMAGE 2 -->
+
+
+
+            <div class="carousel-item" data-type="image">
+              <img src="./public/sidecarsidemaruti.jpg" class="d-block w-100" alt="maruticar" />
+            </div>
+
+
+
+            <div class="carousel-item" data-type="image">
+              <img src="./public/tempotraveller.jpg" class="d-block w-100" alt="tempo" />
+            </div>
+
+
+            <div class="carousel-item" data-type="image">
+              <img src="./public/travelbus.jpg" class="d-block w-100" alt="travelbus" />
+            </div>
+
+
+            <!-- IMAGE 3 -->
+            <div class="carousel-item" data-type="image">
+              <img src="./images/dzire3.jpeg" class="d-block w-100" alt="Bus" />
+            </div>
+
           </div>
+
+          <!-- Controls -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#fleetCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+
+          <button class="carousel-control-next" type="button" data-bs-target="#fleetCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
         </div>
+
+
+
+
+
       </div>
     </section>
+
+
+
+
+
+
     <!-- Coverage Section -->
     <section id="coverage" class="section">
       <div class="container">
@@ -2573,9 +2704,7 @@
             </div>
           </div>
           <div class="trust-image">
-            <img
-              src="https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&amp;w=2070&amp;auto=format&amp;fit=crop"
-              alt="A1 Logistics Fleet" />
+            <img src="./public/imagecar.jpg" alt="A1 Logistics Fleet" />
           </div>
         </div>
       </div>
@@ -2973,6 +3102,42 @@
     </script>
 
 
+    <script>
+      const fleetCarouselEl = document.getElementById('fleetCarousel');
+      const fleetCarousel = bootstrap.Carousel.getOrCreateInstance(
+        fleetCarouselEl,
+        { interval: 3500, pause: 'hover', ride: 'carousel' }
+      );
+
+      fleetCarouselEl.addEventListener('slid.bs.carousel', () => {
+        fleetCarousel.cycle();
+      });
+    </script>
+
+
+
+
+
+
+
+    <!-- Fleet Gallery Modal -->
+    <div id="fleetModal" class="fleet-modal">
+      <div class="fleet-modal-content">
+        <span class="fleet-close" onclick="closeFleetModal()">×</span>
+
+        <!-- Image -->
+        <img id="fleetImage" class="fleet-modal-image" />
+
+        <!-- Video -->
+        <video id="fleetVideo" class="fleet-modal-video" controls></video>
+
+
+      </div>
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 
