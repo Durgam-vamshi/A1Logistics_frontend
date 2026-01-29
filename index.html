@@ -9,6 +9,7 @@
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&family=Geist:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&family=PT+Serif:wght@400;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Shantell+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
 
+
   <style>
     :root {
       --background: #071428;
@@ -44,6 +45,7 @@
 
 
 
+
     /* ===============================
    ENTERPRISE DARK THEME OVERRIDE
    =============================== */
@@ -54,33 +56,6 @@
           transparent 40%),
         linear-gradient(180deg, #020202, #000000);
       color: #e6e7e8;
-    }
-
-    /* Navbar glass effect */
-    .navbar {
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    /* Links underline animation */
-    .nav-links a {
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #00ff88, #00c46a);
-      transition: width .3s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
     }
 
     /* Hero depth */
@@ -235,6 +210,16 @@
         height: 240px;
       }
     }
+
+    .footer-col h4 {
+      padding-left: 30px;
+      /* adjust value if needed (8–16px) */
+    }
+
+    .textlegacy{
+      color:white !important;
+    }
+    
   </style>
 
   <html>
@@ -247,6 +232,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./navbard.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
@@ -290,10 +276,11 @@
       }
 
       .logo-img {
-        height: 56px;
+        height: 100px;
         width: auto;
         display: block;
       }
+
 
       a {
         text-decoration: none;
@@ -480,28 +467,7 @@
         align-items: center;
       }
 
-      /* Navigation */
-      .navbar {
-        background-color: white;
-        padding: 16px 0;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
 
-      .nav-links a {
-        margin-left: 24px;
-        font-weight: 500;
-        font-size: 15px;
-        color: #000000;
-        opacity: 0.8;
-      }
-
-      .nav-links a:hover {
-        opacity: 1;
-      }
-
-      /* Hero */
       .hero {
         position: relative;
         padding: 80px 0 100px 0;
@@ -660,21 +626,7 @@
         background-color: #ffffff;
       }
 
-      /* Logo Marquee */
-      .logo-marquee-section {
-        background-color: white;
-        padding: 24px 0;
-        border-bottom: 1px solid #eeeeee;
-        overflow: hidden;
-      }
 
-      .marquee-track {
-        display: flex;
-        align-items: center;
-        gap: 80px;
-        width: max-content;
-        animation: marquee-scroll 20s linear infinite;
-      }
 
       .logo-item {
         font-weight: 700;
@@ -682,16 +634,6 @@
         color: #000000;
         opacity: 0.6;
         flex-shrink: 0;
-      }
-
-      @keyframes marquee-scroll {
-        0% {
-          transform: translateX(0);
-        }
-
-        100% {
-          transform: translateX(-50%);
-        }
       }
 
       /* Services */
@@ -1338,14 +1280,7 @@
           gap: 8px;
         }
 
-        /* Navbar */
-        .navbar {
-          padding: 12px 0;
-        }
 
-        .nav-links {
-          display: none;
-        }
 
         .flex.gap-2 {
           gap: 8px;
@@ -1420,10 +1355,7 @@
           margin-bottom: 20px;
         }
 
-        /* Logo Marquee */
-        .logo-item {
-          font-size: 16px;
-        }
+
 
         /* Section Padding */
         .section {
@@ -1707,226 +1639,6 @@
 
 
 
-      /* ===============================
-   HAMBURGER MENU
-   =============================== */
-      .hamburger {
-        display: none;
-        flex-direction: column;
-        gap: 6px;
-        cursor: pointer;
-      }
-
-      .hamburger span {
-        width: 26px;
-        height: 2px;
-        background: white;
-        transition: .3s;
-      }
-
-      /* Mobile menu */
-      @media (max-width: 768px) {
-        .hamburger {
-          display: flex;
-        }
-
-        .nav-links {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, .95);
-          backdrop-filter: blur(20px);
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 32px;
-          transform: translateY(-100%);
-          transition: transform .5s cubic-bezier(.22, 1, .36, 1);
-        }
-
-        .nav-links.open {
-          transform: translateY(0);
-        }
-
-        .nav-links a {
-          font-size: 22px;
-          color: white;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .nav-links {
-          display: flex !important;
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.96);
-          backdrop-filter: blur(20px);
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 32px;
-          transform: translateY(-100%);
-          transition: transform 0.45s cubic-bezier(.22, 1, .36, 1);
-          z-index: 9999;
-        }
-
-        .nav-links.open {
-          transform: translateY(0);
-        }
-
-        .nav-links a {
-          font-size: 22px;
-          color: white;
-        }
-      }
-
-
-
-      /* ===============================
-   MOBILE HAMBURGER MENU (CLEAN)
-================================ */
-
-      .hamburger {
-        display: none;
-        flex-direction: column;
-        gap: 6px;
-        cursor: pointer;
-        z-index: 10001;
-      }
-
-      .hamburger span {
-        width: 26px;
-        height: 2px;
-        background: #000;
-        transition: 0.3s ease;
-      }
-
-      /* ❌ Cross animation */
-      .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-
-      .hamburger.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-      }
-
-      /* Mobile only */
-      @media (max-width: 768px) {
-        .hamburger {
-          display: flex;
-        }
-
-        .nav-links {
-          position: fixed;
-          inset: 0;
-          background: #ffffff;
-          /* ✅ WHITE CARD */
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 28px;
-          transform: translateY(-100%);
-          transition: transform 0.45s cubic-bezier(.22, 1, .36, 1);
-          z-index: 10000;
-        }
-
-        .nav-links.open {
-          transform: translateY(0);
-        }
-
-        .nav-links a {
-          font-size: 22px;
-          font-weight: 500;
-          color: #000;
-        }
-      }
-
-      /* Mobile only */
-      @media (max-width: 768px) {
-        .hamburger {
-          display: flex;
-        }
-      }
-
-
-
-      @media (max-width: 768px) {
-        .nav-links {
-          display: flex !important;
-          position: fixed;
-          inset: 0;
-          background: #ffffff;
-          /* ✅ PURE WHITE */
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 20px;
-          /* tighter spacing */
-          transform: translateY(-100%);
-          transition: transform 0.45s cubic-bezier(.22, 1, .36, 1);
-          z-index: 9999;
-        }
-
-        .nav-links.open {
-          transform: translateY(0);
-        }
-      }
-
-
-
-      @media (max-width: 768px) {
-        .nav-links {
-          position: fixed;
-          inset: 0;
-          background: #ffffff;
-          display: flex;
-          flex-direction: column;
-
-          /* ✅ SCROLL FIX */
-          overflow-y: auto;
-          -webkit-overflow-scrolling: touch;
-
-          justify-content: flex-start;
-          /* NOT center */
-          align-items: center;
-          gap: 20px;
-
-          padding: 100px 0 40px;
-          /* top space for navbar */
-          transform: translateY(-100%);
-          transition: transform 0.45s cubic-bezier(.22, 1, .36, 1);
-          z-index: 9999;
-        }
-
-        .nav-links.open {
-          transform: translateY(0);
-        }
-
-        .nav-links a {
-          font-size: 22px;
-          font-weight: 500;
-          color: #000;
-        }
-      }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       .fleet-modal-image,
       .fleet-modal-video {
@@ -1963,6 +1675,99 @@
         border-radius: 50%;
         padding: 12px;
       }
+
+
+
+      /* ===== Coverage Section ===== */
+      .section {
+        padding: 80px 0;
+        background: #fafafa;
+      }
+
+      .section .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* ===== Section Title ===== */
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 28px;
+        line-height: 1.4;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 12px;
+      }
+
+      .section-title p {
+        font-size: 15px;
+        line-height: 1.6;
+        color: #555;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* ===== Coverage Heading ===== */
+      .section h3 {
+        font-size: 20px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 20px;
+        margin-top: 10px;
+      }
+
+      /* ===== Coverage Grid ===== */
+      .coverage-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+      }
+
+      /* ===== Coverage Item ===== */
+      .coverage-item {
+        background: #ffffff;
+        padding: 14px 18px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #222;
+        text-align: center;
+        border: 1px solid #e6e6e6;
+        transition: all 0.25s ease;
+      }
+
+      /* Hover Effect */
+      .coverage-item:hover {
+        background: #000;
+        color: #fff;
+        border-color: #000;
+        transform: translateY(-3px);
+      }
+
+      /* ===== Responsive Adjustments ===== */
+      @media (max-width: 768px) {
+        .section-title h2 {
+          font-size: 22px;
+        }
+
+        .section-title p {
+          font-size: 14px;
+        }
+
+        .section h3 {
+          font-size: 18px;
+        }
+      }
+
+
+      .sec-container {
+        background-color: black !important;
+      }
     </style>
   </head>
 
@@ -1988,10 +1793,12 @@
         </div>
       </div>
     </nav>
+
+
+
+
     <header class="hero">
-      <img src="
-  https://i.pinimg.com/736x/93/32/f8/9332f8a07ae4551efeec53325f0917c6.jpg" class="hero-bg-image"
-        alt="Hitech City Cyber Towers Hyderabad" />
+      <img src="./images/hitehcitypic.jpg" class="hero-bg-image" alt="Hitech City Cyber Towers Hyderabad" />
       <div class="container">
         <div class="hero-content">
           <div class="hero-text">
@@ -2003,7 +1810,7 @@
   margin-bottom: 20px;
   color: #ffffff;
 ">
-              Corporate transportation,<br />
+              Eliminating Shift Delays for<br />
               <span style="
     background: linear-gradient(90deg, #00ff88, #00c46a);
     -webkit-background-clip: text;
@@ -2011,7 +1818,7 @@
     font-weight: 900;
     text-shadow: 0 0 24px rgba(0, 255, 136, 0.25);
   ">
-                reimagined
+                Hitech City IT Firms.
               </span>
             </h1>
 
@@ -2039,10 +1846,7 @@
                 <iconify-icon icon="lucide:car"></iconify-icon>
                 Certified from 2025 • Govt Approved EV Fleet & Luxury Vehicles
               </div>
-
             </div>
-
-
             <div class="hero-features">
               <div class="feature-pill">
                 <iconify-icon icon="lucide:shield-check"></iconify-icon>
@@ -2063,20 +1867,13 @@
             </div>
 
             <div class="hero-stats">
+
               <div class="hero-stat-item">
-                <strong>98%</strong>
-                <span>On-Time</span>
-              </div>
-              <div class="hero-stat-item">
-                <strong>500+</strong>
+                <strong>100+</strong>
                 <span>Daily Trips</span>
               </div>
               <div class="hero-stat-item">
-                <strong>12+</strong>
-                <span>Years Exp.</span>
-              </div>
-              <div class="hero-stat-item">
-                <strong>200+</strong>
+                <strong>500+</strong>
                 <span>Vehicles</span>
               </div>
             </div>
@@ -2088,39 +1885,115 @@
               <button id="getProposalBtn" class="btn btn-white" style="padding: 14px 28px; font-size: 16px">
                 Get a proposal
               </button>
+              <button class="btn btn-white" onclick="openWhatsAppChat('hero-section', 'Employee Transport')">
+                <iconify-icon icon="logos:whatsapp-icon"></iconify-icon>
+                Chat with Sales
+              </button>
 
 
 
             </div>
           </div>
 
-          <div class="booking-card">
-            <h3>Request Corporate Access</h3>
+          <div class="booking-card" style="
+  background: #070b10;
+  border: 1px solid rgba(0,255,136,0.2);
+  box-shadow: 0 40px 120px rgba(0,0,0,.6);
+  color: #ffffff;
+">
+
+            <div style="
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    background: rgba(0,255,136,0.08);
+    border: 1px solid rgba(0,255,136,0.25);
+    border-radius: 8px;
+  ">
+              <p style="
+      font-size: 14px;
+      color: #00ff88;
+      margin-bottom: 8px;
+      font-weight: 600;
+    ">
+                Trusted Corporate Cab Partner in Hyderabad
+              </p>
+
+              <ul style="
+      font-size: 13px;
+      color: #cfeee1;
+      padding-left: 18px;
+      margin: 0;
+      line-height: 1.5;
+    ">
+                <li>Serving 50+ IT & enterprise clients</li>
+                <li>100+ daily trips with SLA-backed operations</li>
+                <li>GPS-tracked, verified drivers & insured fleet</li>
+              </ul>
+            </div>
+
+            <h3 style="
+    margin-bottom: 8px;
+    color: #ffffff;
+  ">
+              Get a Custom Transport Plan
+            </h3>
+
+            <p style="
+    font-size: 14px;
+    color: #a8cfc0;
+    margin-bottom: 20px;
+  ">
+              Share a few details and our team will design routes, fleet size, and pricing tailored to your company.
+            </p>
 
             <form id="leadForm">
               <div class="form-group">
-                <label class="form-label">Work Email</label>
-                <input type="email" id="email" class="form-input" />
+                <label class="form-label" style="color:#9ff5cc;">
+                  Work Email
+                </label>
+                <input type="email" id="email" class="form-input" style="
+        background:#0b1318;
+        color:#ffffff;
+        border:1px solid rgba(255,255,255,0.1);
+      " />
               </div>
 
               <div class="form-group">
-                <label class="form-label">Company Name</label>
-                <input type="text" id="companyName" class="form-input" />
+                <label class="form-label" style="color:#9ff5cc;">
+                  Company Name
+                </label>
+                <input type="text" id="companyName" class="form-input" style="
+        background:#0b1318;
+        color:#ffffff;
+        border:1px solid rgba(255,255,255,0.1);
+      " />
               </div>
 
               <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 16px;">
                 <div class="form-group">
-                  <label class="form-label">Employees</label>
-                  <select id="employees" class="form-select">
-                    <option>50-100</option>
-                    <option>100-500</option>
+                  <label class="form-label" style="color:#9ff5cc;">
+                    Employees
+                  </label>
+                  <select id="employees" class="form-select" style="
+          background:#0b1318;
+          color:#ffffff;
+          border:1px solid rgba(255,255,255,0.1);
+        ">
+                    <option>50–100</option>
+                    <option>100–500</option>
                     <option>500+</option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label">Shift Type</label>
-                  <select id="shiftType" class="form-select">
+                  <label class="form-label" style="color:#9ff5cc;">
+                    Shift Type
+                  </label>
+                  <select id="shiftType" class="form-select" style="
+          background:#0b1318;
+          color:#ffffff;
+          border:1px solid rgba(255,255,255,0.1);
+        ">
                     <option>Day</option>
                     <option>Night</option>
                     <option>24x7</option>
@@ -2128,42 +2001,27 @@
                 </div>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-block" style="margin-top: 16px;">
-                Submit Request
+              <button type="submit" class="btn btn-primary btn-block" style="
+      margin-top: 16px;
+      background: linear-gradient(90deg, #00ff88, #00c46a);
+      color: #000;
+      font-weight: 700;
+    ">
+                Request Free Proposal
               </button>
             </form>
 
-
-
           </div>
+
+
+
+
+
+
+
         </div>
       </div>
     </header>
-
-
-    <div class="logo-marquee-section">
-      <div class="marquee-track">
-        <!-- Original Items -->
-        <div class="logo-item">TECHCORP</div>
-        <div class="logo-item">NEXUS</div>
-        <div class="logo-item">GLOBEX</div>
-        <div class="logo-item">SOLUTIONS</div>
-        <div class="logo-item">INNOVA</div>
-        <div class="logo-item">ALPHA</div>
-        <div class="logo-item">OMEGA</div>
-        <div class="logo-item">ZETA</div>
-
-        <!-- Duplicated Items for Loop -->
-        <div class="logo-item">TECHCORP</div>
-        <div class="logo-item">NEXUS</div>
-        <div class="logo-item">GLOBEX</div>
-        <div class="logo-item">SOLUTIONS</div>
-        <div class="logo-item">INNOVA</div>
-        <div class="logo-item">ALPHA</div>
-        <div class="logo-item">OMEGA</div>
-        <div class="logo-item">ZETA</div>
-      </div>
-    </div>
 
     <!-- Services Section (New Tabbed Design) -->
     <section id="services" class="section">
@@ -2225,10 +2083,6 @@
                 <iconify-icon icon="lucide:check-circle"></iconify-icon>
                 <span><strong>Multiple Shifts:</strong> Morning, evening, and mid-shift coverage available</span>
               </div>
-              <div class="service-feature-item">
-                <iconify-icon icon="lucide:check-circle"></iconify-icon>
-                <span><strong>SLA Guarantee:</strong> 98% on-time performance with automated reporting</span>
-              </div>
             </div>
           </div>
 
@@ -2279,10 +2133,6 @@
               </div>
               <div class="service-feature-item">
                 <iconify-icon icon="lucide:check-circle"></iconify-icon>
-                <span><strong>Panic Button SOS:</strong> Instant alert to command center and emergency contacts</span>
-              </div>
-              <div class="service-feature-item">
-                <iconify-icon icon="lucide:check-circle"></iconify-icon>
                 <span><strong>Live CCTV Monitoring:</strong> In-cabin cameras with cloud storage for 90 days</span>
               </div>
               <div class="service-feature-item">
@@ -2310,10 +2160,10 @@
                 <strong>Zero</strong>
                 <span>Safety Incidents</span>
               </div>
-              <div class="service-stat-box">
+              <!-- <div class="service-stat-box">
                 <strong>5 Sec</strong>
                 <span>SOS Response</span>
-              </div>
+              </div> -->
             </div>
 
             <div>
@@ -2568,71 +2418,67 @@
 
         <!-- BOOTSTRAP CAROUSEL -->
 
-        <!-- <div id="fleetCarousel" class="carousel slide" data-bs-ride="false"> -->
-        <div id="fleetCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500"
-          data-bs-pause="hover">
 
 
-          <!-- Indicators -->
-          <div class="carousel-indicators">
-            <button data-bs-target="#fleetCarousel" data-bs-slide-to="0" class="active"></button>
-            <button data-bs-target="#fleetCarousel" data-bs-slide-to="1"></button>
-            <button data-bs-target="#fleetCarousel" data-bs-slide-to="2"></button>
-            <button data-bs-target="#fleetCarousel" data-bs-slide-to="3"></button>
-            <button data-bs-target="#fleetCarousel" data-bs-slide-to="4"></button>
+<div id="fleetCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500" data-bs-pause="hover">
 
-          </div>
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#fleetCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+    <button type="button" data-bs-target="#fleetCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#fleetCarousel" data-bs-slide-to="2"></button>
+    <button type="button" data-bs-target="#fleetCarousel" data-bs-slide-to="3"></button>
+    <button type="button" data-bs-target="#fleetCarousel" data-bs-slide-to="4"></button>
+    <button type="button" data-bs-target="#fleetCarousel" data-bs-slide-to="5"></button>
+    <button type="button" data-bs-target="#fleetCarousel" data-bs-slide-to="6"></button>
+    <button type="button" data-bs-target="#fleetCarousel" data-bs-slide-to="7"></button>
+    <button type="button" data-bs-target="#fleetCarousel" data-bs-slide-to="8"></button>
+  </div>
 
-          <!-- Slides -->
-          <div class="carousel-inner rounded-4 overflow-hidden">
+  <div class="carousel-inner rounded-4 overflow-hidden">
+    <div class="carousel-item active">
+      <img src="./images/cars1.jpeg" class="d-block w-100" alt="Corporate Sedan">
+    </div>
+    <div class="carousel-item">
+      <img src="./images/cars2.jpeg" class="d-block w-100" alt="Corporate SUV">
+    </div>
+    <div class="carousel-item">
+      <img src="./images/busescorporate.webp" class="d-block w-100" alt="Corporate Bus">
+    </div>
+    <div class="carousel-item">
+      <img src="./images/bus.jpg" class="d-block w-100" alt="Corporate Shuttle Bus">
+    </div>
+    <div class="carousel-item">
+      <img src="./images/employeesbus.jpg" class="d-block w-100" alt="Employees Commute Bus">
+    </div>
+    <div class="carousel-item">
+      <img src="./images/dzire2.jpeg" class="d-block w-100" alt="Maruti Dzire Sedan">
+    </div>
+    <div class="carousel-item">
+      <img src="./images/fleetimg.jpg" class="d-block w-100" alt="Fleet Overview">
+    </div>
+    <div class="carousel-item">
+      <img src="./images/sreefleet.jpg" class="d-block w-100" alt="Sree Fleet">
+    </div>
+    <div class="carousel-item">
+      <img src="./images/fleetcar1.jpg" class="d-block w-100" alt="Fleet Car">
+    </div>
+  </div>
 
-            <!-- IMAGE 1 -->
-            <div class="carousel-item active" data-type="image">
-              <img src="./images/dzire1.jpeg" class="d-block w-100" alt="Sedan" />
-            </div>
-
-            <!-- IMAGE 2 -->
-
-
-
-            <div class="carousel-item" data-type="image">
-              <img src="./public/sidecarsidemaruti.jpg" class="d-block w-100" alt="maruticar" />
-            </div>
-
-
-
-            <div class="carousel-item" data-type="image">
-              <img src="./public/tempotraveller.jpg" class="d-block w-100" alt="tempo" />
-            </div>
-
-
-            <div class="carousel-item" data-type="image">
-              <img src="./public/travelbus.jpg" class="d-block w-100" alt="travelbus" />
-            </div>
-
-
-            <!-- IMAGE 3 -->
-            <div class="carousel-item" data-type="image">
-              <img src="./images/dzire3.jpeg" class="d-block w-100" alt="Bus" />
-            </div>
-
-          </div>
-
-          <!-- Controls -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#fleetCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </button>
-
-          <button class="carousel-control-next" type="button" data-bs-target="#fleetCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </button>
-        </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#fleetCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#fleetCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
 
 
 
 
-      </div>
+
     </section>
 
 
@@ -2644,7 +2490,11 @@
     <section id="coverage" class="section">
       <div class="container">
         <div class="section-title">
-          <h2>Serving Major Routes Across Hyderabad & India</h2>
+          <h2>
+            Serving all areas with in Greater Hyderabad
+            Comprehensive corporate transport coverage including GHMC zones, Hitech City Cyber Towers, Uppal, Ghatkesar
+            and all key business hubs across India.
+          </h2>
           <p>
             Comprehensive corporate transport coverage including GHMC zones,
             Hitech City Cyber Towers, Uppal, Ghatkesar and all key business hubs across India.
@@ -2676,11 +2526,11 @@
     </section>
 
     <!-- Trust / Experience Section -->
-    <section class="section trust-section">
-      <div class="container">
+    <section class="section trust-section sec-container">
+      <div class="container ">
         <div class="trust-grid">
           <div class="trust-content">
-            <h2>12 Years of<br />Moving Hyderabad</h2>
+            <h2>A Legacy of Reliability in<br />Hyderabad’s IT Corridors.</h2>
             <p>
               We understand the critical nature of employee logistics. Our
               robust infrastructure, technology-driven operations, and
@@ -2688,20 +2538,30 @@
               on time, every single day.
             </p>
 
+       
+
+
             <div class="trust-stats-grid">
               <div class="stat-card">
-                <h3>12+</h3>
-                <p>Years Experience</p>
+                <h3 class="textlegacy"> 24/7</h3>
+                <p>Service Availability</p>
               </div>
               <div class="stat-card">
-                <h3>5k+</h3>
-                <p>Daily Riders</p>
+                <h3 class="textlegacy">5k+</h3>
+                <p>Successful Trips Completed</p>
               </div>
               <div class="stat-card">
-                <h3>100%</h3>
-                <p>Compliance Rate</p>
+                <h3 class="textlegacy">100%</h3>
+                <p>Verified & Insured Vehicles</p>
               </div>
             </div>
+
+
+
+
+
+
+
           </div>
           <div class="trust-image">
             <img src="./public/imagecar.jpg" alt="A1 Logistics Fleet" />
@@ -2892,6 +2752,7 @@
                     color: white;
                   ">
                 <iconify-icon icon="lucide:twitter" style="font-size: 16px"></iconify-icon>
+
               </div>
               <div style="
                     width: 32px;
@@ -2905,8 +2766,13 @@
                   ">
                 <iconify-icon icon="lucide:linkedin" style="font-size: 16px"></iconify-icon>
               </div>
+
+              <button class="btn btn-primary" onclick="openWhatsAppChat('footer', 'Corporate Mobility')">
+                Connect with us on WhatsApp
+              </button>
             </div>
           </div>
+
           <div class="footer-col">
             <h4>Company</h4>
             <ul class="footer-links">
@@ -2916,6 +2782,10 @@
               <li><a href="#">Careers</a></li>
             </ul>
           </div>
+
+
+
+
           <div class="footer-col">
             <h4>Services</h4>
             <ul class="footer-links">
@@ -2926,19 +2796,47 @@
           </div>
           <div class="footer-col">
             <h4>Contact</h4>
+
+
+
             <ul class="footer-links">
               <li class="flex items-center gap-2" style="margin-bottom: 16px">
-                <span>Hyderabad, India</span>
+                <span>2-3-647/1 Amberpet Hyd 500013</span>
               </li>
               <li class="flex items-center gap-2" style="margin-bottom: 16px">
-                <span>+91 98765 43210</span>
-              </li>
               <li class="flex items-center gap-2">
                 <span>info@a1logistics.com</span>
               </li>
+
+
+
+
+
+              <li class="flex flex-col gap-2 mb-4">
+                <span class="text-sm font-semibold uppercase tracking-wide opacity-70">
+                  Contact Numbers
+                </span>
+                <span>9701682087</span>
+                <span>97002 33343</span>
+                <span>8309458513</span>
+              </li>
+
+
             </ul>
+
+
+
+
+
+
+
+
+
           </div>
         </div>
+
+
+
 
         <div class="footer-bottom">
           <p>© 2025 A1 Logistics.</p>
@@ -2949,6 +2847,12 @@
           </div>
         </div>
       </div>
+
+
+
+
+
+
     </footer>
 
 
@@ -2974,7 +2878,7 @@
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(payload),
+            body: JSON.stringify(payload),  
           });
 
           const result = await response.json();
@@ -3102,20 +3006,52 @@
     </script>
 
 
+
+
+
     <script>
-      const fleetCarouselEl = document.getElementById('fleetCarousel');
-      const fleetCarousel = bootstrap.Carousel.getOrCreateInstance(
-        fleetCarouselEl,
-        { interval: 3500, pause: 'hover', ride: 'carousel' }
-      );
+  new bootstrap.Carousel('#fleetCarousel', {
+    interval: 3500,
+    pause: 'hover',
+    ride: 'carousel'
+  });
+</script>
 
-      fleetCarouselEl.addEventListener('slid.bs.carousel', () => {
-        fleetCarousel.cycle();
-      });
+
+
+
+    <script>
+      function openWhatsAppChat(source = "website") {
+
+        const message = `
+Hello Team A1Logistics,
+
+I’m looking to discuss corporate cab booking requirements.
+
+Could you please connect with me to proceed further?
+
+Thank you.
+`.trim();
+
+        const encoded = encodeURIComponent(message);
+        const phone = "918309458513"; // Owner WhatsApp number
+
+        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        const url = isMobile
+          ? `https://wa.me/${phone}?text=${encoded}`
+          : `https://web.whatsapp.com/send?phone=${phone}&text=${encoded}`;
+
+        // Backend tracking (non-blocking)
+        fetch("https://a1-649n.onrender.com/api/leads/whatsapp", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ source })
+        }).catch(() => { });
+
+        window.open(url, "_blank");
+      }
     </script>
-
-
-
 
 
 
